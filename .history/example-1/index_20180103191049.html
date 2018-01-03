@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Emscripten-Generated Code</title>
+ </head>
+ <body>
+    <div style="width: 200px; margin: auto; margin-top: 20px;">
+        <h2>阶乘计算</h2>
+        <input type="number" id="Input"/> 
+        <button onclick="factorial()">计算</button>
+    </div>
+    <script type="text/javascript" src="test.js"></script>
+    <script type="text/javascript">
+        
+        // var importObject = {
+        //     factorial: function(arg) {
+        //         console.log(arg);
+        //     }
+        // };
+
+        // var info = {
+        //     'global': null,
+        //     'env': null,
+        //     'asm2wasm': { // special asm2wasm imports
+        //         "f64-rem": function(x, y) {
+        //             return x % y;
+        //         },
+        //         "debugger": function() {
+        //             debugger;
+        //         }
+        //     },
+        // };
+
+        // fetch('test.wasm', { credentials: 'same-origin' }).then(res => {
+        //     return res.arrayBuffer()
+        // }).then(bytes => {
+        //     console.log('bytes:', bytes)
+        //     // 利用WebAssembly.instantiate接口将wasm模块的方法与importObject进行映射
+        //     return WebAssembly.instantiate(bytes, info)
+        // }).then(obj => {
+        //     console.log('obj:', obj)
+        //     // 执行调用factorial
+        //     obj.instance.exports.factorial(10);
+        // })
+
+        function factorial() {
+            var num = document.getElementById('Input').value;
+            console.log('num', num)
+            console.log('Module:', Module)
+            var res = Module._callFactorial(10);
+        }
+    </script>
+ </body>
+ </html>
